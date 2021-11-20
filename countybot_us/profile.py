@@ -210,7 +210,7 @@ class CountyBotUS(BaseProfile):
 
     def get_lon_lat(self, id_):
 
-        pass
+        return None, None
 
     """
     Function that will be called after sending the tweet, that will receive
