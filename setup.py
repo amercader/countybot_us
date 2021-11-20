@@ -13,7 +13,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/amercader/countybot_us",
     packages=setuptools.find_packages(),
-    install_requires=["munibot", "requests"],
+    install_requires=[
+        "munibot",
+        "requests",
+        "gdal==3.0.4"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
