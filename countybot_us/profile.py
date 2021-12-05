@@ -167,7 +167,7 @@ class CountyBotUS(BaseProfile):
         data = db.execute(
             """
             SELECT fullname, wikilink
-            FROM us_counties
+            FROM us
             WHERE geoid = ?
             """,
             (id_,),
@@ -191,7 +191,7 @@ class CountyBotUS(BaseProfile):
         id_ = db.execute(
             """
             SELECT geoid
-            FROM us_counties
+            FROM us
             WHERE tweet_us IS NULL
             ORDER BY RANDOM()
             LIMIT 1"""
@@ -223,7 +223,7 @@ class CountyBotUS(BaseProfile):
 
         db.execute(
             """
-            UPDATE us_counties
+            UPDATE us
             SET tweet_us = ?
             WHERE geoid = ?
             """,
