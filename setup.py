@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.3",
     author="Adrià Mercader",
     author_email="amercadero@gmail.com",
-    description="A Twitter bot built with munibot that tweets imagery of US Counties and equivalent units",
+    description="A Mastodon bot built with munibot that posts imagery of US Counties and equivalent units",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/amercader/countybot_us",

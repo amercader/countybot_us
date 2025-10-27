@@ -15,7 +15,7 @@ _TEMP_FILE_NAME = "countybot_us_tmp_file.tiff"
 
 class CountyBotUS(BaseProfile):
     """
-    A Munibot profile for tweeting images of US Couties
+    A Munibot profile for posting images of US Couties
     """
 
     # Mandatory properties
@@ -122,7 +122,7 @@ class CountyBotUS(BaseProfile):
         return tmp_f
 
     """
-    Returns the text that needs to be included in the tweet for this particular
+    Returns the text that needs to be included in the post for this particular
     feature.
     """
 
@@ -178,9 +178,9 @@ class CountyBotUS(BaseProfile):
         return f"{county_name}\n\n\n{wiki_link}"
 
     """
-    Returns the id of the next feature that should be tweeted.
+    Returns the id of the next feature that should be posted.
 
-    This is used if the ``munibot tweet`` command is called withot providing
+    This is used if the ``munibot post`` command is called withot providing
     an id.
     """
 
@@ -192,7 +192,7 @@ class CountyBotUS(BaseProfile):
             """
             SELECT geoid
             FROM us
-            WHERE tweet_us IS NULL
+            WHERE mastodon_us IS NULL
             ORDER BY RANDOM()
             LIMIT 1"""
         )
@@ -203,9 +203,9 @@ class CountyBotUS(BaseProfile):
 
     """
     Return a tuple with the longitude and latitude that should be associated
-    with the tweet.
+    with the post.
 
-    The bot account should have location information on tweets activated.
+    The bot account should have location information on posts activated.
     """
 
     def get_lon_lat(self, id_):
@@ -213,18 +213,18 @@ class CountyBotUS(BaseProfile):
         return None, None
 
     """
-    Function that will be called after sending the tweet, that will receive
-    the feature and the status id of the tweet sent.
+    Function that will be called after sending the post, that will receive
+    the feature and the status id of the post sent.
     """
 
-    def after_tweet(self, id_, status_id):
+    def after_post(self, id_, status_id):
 
         db = sqlite3.connect(config["profile:us"]["db_path"])
 
         db.execute(
             """
             UPDATE us
-            SET tweet_us = ?
+            SET mastodon_us = ?
             WHERE geoid = ?
             """,
             (

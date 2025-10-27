@@ -1,6 +1,6 @@
 # US Counties Bot
 
-A friendly Twitter bot built with [Munibot](https://github.com/amercader/munibot) that tweets imagery of US Counties and equivalent administrative units.
+A friendly Mastodon bot built with [Munibot](https://github.com/amercader/munibot) that posts imagery of US Counties and equivalent administrative units.
 
 ## Install and setup
 
@@ -21,8 +21,8 @@ This should be referenced in the `[profile:us]` section of your `munibot.ini` fi
 
 ```
 [profile:us]
-twitter_key=CHANGE_ME
-twitter_secret=CHANGE_ME
+mastodon_access_token=CHANGE_ME
+mastodon_api_base_url=CHANGE_ME
 db_path=/path/to/data/countybot_us.sqlite
 ```
 
