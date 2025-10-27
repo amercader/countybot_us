@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="countybot_us",
-    version="0.0.3",
+    version="0.0.4",
     author="Adrià Mercader",
     author_email="amercadero@gmail.com",
     description="A Mastodon bot built with munibot that posts imagery of US Counties and equivalent units",
