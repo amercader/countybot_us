@@ -16,7 +16,7 @@ setuptools.setup(
     install_requires=[
         "munibot",
         "requests",
-        "gdal==3.0.4"],
+        "gdal"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

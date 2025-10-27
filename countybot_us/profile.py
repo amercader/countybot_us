@@ -58,7 +58,12 @@ class CountyBotUS(BaseProfile):
 
         r = requests.get(base_url, params=urlencode({**common_params, **geom_params}))
 
-        feature_collection = r.json()
+        try:
+            feature_collection = r.json()
+        except requests.exceptions.JSONDecodeError:
+            raise ValueError(
+                f"Error while querying geometry for county {id_}: {r.content}"
+            )
 
         if "error" in feature_collection:
             raise ValueError(
@@ -106,8 +111,8 @@ class CountyBotUS(BaseProfile):
         }
         img = self.get_wms_image(**wms_options)
 
-        if img.info().get("Content-Type") == "application/xml":
-            raise ValueError("Error retrieving WMS image: {}".format(img.read()))
+#        if img.info().get("Content-Type") == "application/xml":
+#            raise ValueError("Error retrieving WMS image: {}".format(img.read()))
 
         width, height = self.get_image_size(bbox)
 
